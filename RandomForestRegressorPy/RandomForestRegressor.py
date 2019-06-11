@@ -50,7 +50,7 @@ class RandomForestRegressor(object):
 
     def build_tree(self, X, y):
         tree = DecisionTree(
-            self.n_estimators,
+            self.n_features,
             self.max_depth,
             self.min_samples_leaf
         )
@@ -126,7 +126,7 @@ class TreeNode(object):
             self.find_better_split(f_idx, sort_idxs[:, i], X[:, f_idx], y)
 
         # check if has any possible split point
-        if f_idx == -1:
+        if self.f_idx == -1:
             self.is_leaf = True
             self.val = np.mean(y)
             return
